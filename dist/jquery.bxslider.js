@@ -257,11 +257,11 @@
       // if video is true, set up the fitVids plugin
       if (slider.settings.video) { el.fitVids(); }
 	  //preloadImages
-	  if (slider.settings.preloadImages === 'none') { 
-		  preloadSelector = null; 
+	  if (slider.settings.preloadImages === 'none') {
+		  preloadSelector = null;
 	  }
-      else if (slider.settings.preloadImages === 'all' || slider.settings.ticker) { 
-		  preloadSelector = slider.children; 
+      else if (slider.settings.preloadImages === 'all' || slider.settings.ticker) {
+		  preloadSelector = slider.children;
 	  }
       // only check for control addition if not in "ticker" mode
       if (!slider.settings.ticker) {
@@ -751,7 +751,7 @@
      *  - DOM event object
      */
     var clickNextBind = function(e) {
-      e.preventDefault();
+      //e.preventDefault();
       if (slider.controls.el.hasClass('disabled')) { return; }
       // if auto show is running, stop it
       if (slider.settings.auto && slider.settings.stopAutoOnClick) { el.stopAuto(); }
@@ -765,7 +765,7 @@
      *  - DOM event object
      */
     var clickPrevBind = function(e) {
-      e.preventDefault();
+      //e.preventDefault();
       if (slider.controls.el.hasClass('disabled')) { return; }
       // if auto show is running, stop it
       if (slider.settings.auto && slider.settings.stopAutoOnClick) { el.stopAuto(); }
@@ -780,7 +780,7 @@
      */
     var clickStartBind = function(e) {
       el.startAuto();
-      e.preventDefault();
+      //e.preventDefault();
     };
 
     /**
@@ -791,7 +791,7 @@
      */
     var clickStopBind = function(e) {
       el.stopAuto();
-      e.preventDefault();
+      //e.preventDefault();
     };
 
     /**
@@ -802,7 +802,7 @@
      */
     var clickPagerBind = function(e) {
       var pagerLink, pagerIndex;
-      e.preventDefault();
+      //e.preventDefault();
       if (slider.controls.el.hasClass('disabled')) {
         return;
       }
@@ -1088,7 +1088,7 @@
       //every pointerup regardless of whether pointerup is on same screen location as pointerdown or not
       slider.viewport.on('click', '.bxslider a', function(e) {
         if (slider.viewport.hasClass('click-disabled')) {
-          e.preventDefault();
+          //e.preventDefault();
           slider.viewport.removeClass('click-disabled');
         }
       });
@@ -1106,7 +1106,7 @@
       if (e.type !== 'touchstart' && e.button !== 0) {
         return;
       }
-      e.preventDefault();
+      //e.preventDefault();
       //disable slider controls while user is interacting with slides to avoid slider freeze that happens on touch devices when a slide swipe happens immediately after interacting with slider controls
       slider.controls.el.addClass('disabled');
 
@@ -1117,11 +1117,11 @@
         slider.touch.originalPos = el.position();
         var orig = e.originalEvent,
         touchPoints = (typeof orig.changedTouches !== 'undefined') ? orig.changedTouches : [orig];
-		var chromePointerEvents = typeof PointerEvent === 'function'; 
-		if (chromePointerEvents) { 
-			if (orig.pointerId === undefined) { 
+		var chromePointerEvents = typeof PointerEvent === 'function';
+		if (chromePointerEvents) {
+			if (orig.pointerId === undefined) {
 				return;
-			} 
+			}
 		}
         // record the starting touch x, y coordinates
         slider.touch.start.x = touchPoints[0].pageX;
@@ -1153,7 +1153,7 @@
      *  - DOM event object
      */
     var onPointerCancel = function(e) {
-      e.preventDefault();
+      //e.preventDefault();
       /* onPointerCancel handler is needed to deal with situations when a touchend
       doesn't fire after a touchstart (this happens on windows phones only) */
       setPositionProperty(slider.touch.originalPos.left, 'reset', 0);
@@ -1187,13 +1187,13 @@
 
       // x axis swipe
       if ((xMovement * 3) > yMovement && slider.settings.preventDefaultSwipeX) {
-        e.preventDefault();
+        //e.preventDefault();
       // y axis swipe
       } else if ((yMovement * 3) > xMovement && slider.settings.preventDefaultSwipeY) {
-        e.preventDefault();
+        //e.preventDefault();
       }
       if (e.type !== 'touchmove') {
-        e.preventDefault();
+        //e.preventDefault();
       }
 
       if (slider.settings.mode !== 'fade' && slider.settings.oneToOneTouch) {
@@ -1217,7 +1217,7 @@
      *  - DOM event object
      */
     var onTouchEnd = function(e) {
-      e.preventDefault();
+      //e.preventDefault();
       slider.viewport.off('touchmove MSPointerMove pointermove', onTouchMove);
       //enable slider controls as soon as user stops interacing with slides
       slider.controls.el.removeClass('disabled');
